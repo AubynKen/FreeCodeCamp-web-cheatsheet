@@ -709,5 +709,469 @@ p {
 
 
 
+### Box shadow
 
+```css
+.some-class {
+  box-shadow: 0 10px 20px 10px rgba(0,0,0,0.2);
+  /* This adds a shadow 10px to the bottom, with 20 pixels of blurring radius and 10 pixels of spreading radius, with a 80 percent transparent black color */
+}
+```
+
+Parameters of the box-shadow property:
+
+- **offset-x**: How much to the right
+- **offset-y**: How much to the buttom
+- **blur-radius**: Optional, how much the shadow border should be blurred
+- **spread-radius**: Optional, how much bigger the shadow is compared to the box
+- **color**: self explanatory
+
+
+
+### Opacity property
+
+```css
+#some-element {
+  opacity: 0.1;
+} /* some-element is now 10% opaque, ie. 90% transparent */
+
+#some-other-element {
+  opacity: 0.9;
+} /* some-other-element is now 90% opaque */
+```
+
+The parameter goes from 0 (totally transparent) to 1 (totally opaque).
+
+
+
+### Text transform
+
+```html
+<p class="my-paragraph">HELLO my friend</p>
+```
+
+```css
+p {
+  text-transform: lowercase; /* hello my friend */
+  text-transform: uppercase; /* HELLO MY FRIEND */
+  text-transform: capitalize; /* Hello My Friend */
+}
+```
+
+Other possible values for this property include:
+
+* ***None***: Use the original text
+* ***Inherit***: Use the text transform property of parent element
+
+*p.s*:  *If we apply **"initial"** to this property, **None** will be applied because it's the default value of the text-transform property. Same goes for other properties in CSS.*
+
+
+
+### Font weight
+
+This property adjusts the **thickness** of the text.
+
+```css
+font-weight: 200; /* The value is unitless. Do not use px. */
+```
+
+
+
+### Line height
+
+```css
+p {
+  line-height: 40px; 
+}
+/* Now each line of the paragraph element is 40 pixels in height. */
+```
+
+
+
+### The hover pseudo-class
+
+```css
+a {
+  color: grey; /* The anchor element is grey */
+}
+
+a:hover {
+  color: red; /* But when the cursur hovers over it, the element becomes red */ 
+}
+```
+
+
+
+### Changing an elements's relative position
+
+```css
+.my-block {
+  position: relative;
+  bottom: 10px;
+} /* This moves my-block away from the bottom, without changing the normal flow of the document */
+```
+
+
+
+### Absolute position
+
+```css
+  #searchbar {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+  }
+/* This removes the searchbar from the normal flow of the document. The position is relative to its closest ancestor */
+```
+
+
+
+### Float
+
+Pushes element to the left / right side of the parent.
+
+```css
+#left-block {
+  float: left;
+} /* This box is moved to the left */
+
+#right-block {
+  float: right;
+} /* This box is moved to the right */
+```
+
+
+
+### Z-index
+
+When multiple elements **overlap** with each other, the **z-index property** is what decides which one is **on top.** Only integers are accepted.
+
+*eg.* *Say we have two elements, red-block and blue-block that overlap*:
+
+```css
+#red-block {
+  ...
+  z-index: 2;
+}
+
+#blue-block {
+  ...
+  z-index: 1; /* 1 < 2 so red-block is on top */
+}
+```
+
+
+
+### Centering an element in CSS
+
+```css
+#element {
+  margin: auto; /* Now the element is centered */
+}
+```
+
+
+
+### Hue, Saturation, Lighness
+
+We've seen **rgb()** and **rgba()**. Another way to set a color is to use the **hsl()** function.
+
+```css
+#some-element {
+  background-color: hsl(0, 100%, 50%); /* You guessed it, this is red */
+}
+```
+
+* **Hue**: Basically a circular color wheel with RED at 0 degrees, GREEN at 120 and BLUE at 240.
+* **Saturation**: Goes from 0% (grey) to 100%(totally vibrant and saturated)
+* **Lightness**: Goes from 0%(black) to 100%(white)
+
+
+
+### Linear gradient
+
+```css
+#some-element {
+  color: linear-gradient(direction, color1, color2 ...);
+}
+```
+
+The **direction** parameter is in degree. It start from the top (0 degrees) and goes clockwise *(eg. 90 degrees is the (left to) right direction.)*
+
+
+
+### Repeating linear gradient
+
+For more precision on the pattern, we may use the repeating-linear-gradient which allows us to specify the positions of the colours more precisely. 
+
+```css
+#some-element {
+  color: repeating-linear-gradient(
+      90deg,
+      yellow 0px,
+      blue 40px,
+      green 40px,
+      red 80px
+    );
+}
+```
+
+
+
+### The url() function
+
+```css
+body {
+  background: url(https://cdn-media-1.freecodecamp.org/imgr/MJAkxbh.png);
+  /* This sets the background color to the given url */
+}
+```
+
+
+
+### Transform, scale
+
+```css
+p:hover {
+  transform: scale(2);
+} /* This doubles the size of the phrase when being hovered over. */
+```
+
+
+
+### Skew
+
+```css
+#some-element {
+  transform: skewX(20deg);
+  transform: skewY(-20deg);
+}
+```
+
+
+
+### Before and After pseudo elements
+
+```html
+<style>
+  p::before {
+    content: "Before element";
+  }
+  
+  p::after {
+    conten: "After element";
+    font-size: 20px;
+    color: red;
+  }
+</style>
+
+<p class="my-paragraph">This is my paragraph.</p>
+```
+
+The page renders as if the following code was written:
+
+```html
+Before element
+
+<p class="my-paragraph">This is my paragraph.</p>
+
+<div style="font-size: 20px; color: red;">
+  After element
+</div>
+```
+
+
+
+### Keyframes and animation
+
+```css
+.animated-class {
+  ...
+  animation-name: rainbow; /* Tells "@keyframes rainbow" below to act on this class */
+  animation-duration: 3s;
+  ...
+}
+
+@keyframes rainbow {
+  0% {
+    background-color: red;
+  }
+  50% {
+    background-color: green;
+  }
+  100% {
+    background-color: blue;
+  }
+}
+
+/* This creates an animation for the animation-class class, with background color starting at red, graduately transitioning to green and graduately transitioning to blue */
+```
+
+ In order to **lock the animation at 100% after it finishes**:
+
+```css
+animation-fill-mode: forwards;
+```
+
+For the animation to repeat indefinitely:
+
+```css
+animation-iteration-count: 3;
+```
+
+##### Timing function:
+
+```css
+animation-timing-function: ease; /* Default value. Slow -> Fast -> Slow */
+animation-timing-function: linear; /* Self explanatory */
+animation-timing-function: ease-in; /* Slow -> Fast */
+animation-timing-function: ease-out; /* Fast -> Slow */
+```
+
+You can create your custom timing function with **cubic-bezier()**:
+
+```css
+animation-timing-function: cubic-bezier(0.25, 0.25, 0.75, 0.75);
+```
+
+This creates the $bezier_{cubic}(x_1, y_1, x_2, y_2)$ curve. Where the four paratmeters range from 0 to 1, creating the two control points, with time on the x axis and position on the y axis.
+
+---
+
+## Applied Accessibility
+
+- When an image **dosen't need further explaination** because of it **context** or its **use**, we can **leave the alternative text blank**.
+- **Headings** should show **hierarchical relationships** of content.
+
+
+
+### Semantic elements:
+
+Semantic elements is preferred to div becuase it provides better structuring and helps assistive devices to figure out what is what, although visually they are equivalent to div.
+
+```html
+<header>This is a header.</header>
+<nav>Navigation bar.</nav>
+<main>
+  <section>Section one.</section>
+  <section>Section two.</section>
+  <article>Use article instead of section only if the content is self-contained. If the content doesn't make sense when taken out of the context of the website, use section.</article>
+</main>
+<footer>Author copyright blah blah...</footer>
+```
+
+### Audio
+
+```html
+    <audio id="Cat-meowing" controls>
+    <!-- The controls attribute is boolean. It adds the play/pause buttom and keyboard control -->
+      <source src="link-to-the-audio.mp3" type="audio/mpeg">
+    </audio>
+```
+
+
+
+### Figure and figcaption
+
+By wrapping an image and its caption together in a figure tag improves accessibility:
+
+```html
+<figure>
+  <img src="Mouse.jpeg" alt="mouse-photo">
+  <br>
+  <figcaption>
+    Jerry eating a piece of cheese.
+  </figcaption>
+</figure>
+```
+
+
+
+### Fieldset
+
+We can group radio buttons in a fieldset for better accessibility:
+
+```html
+<form>
+  <fieldset> <!-- This groups the following radio buttons together -->
+    <legend>Choose one of these three items:</legend> <!-- Legend adds extra info -->
+    <input id="one" type="radio" name="items" value="one">
+    <label for="one">Choice One</label><br>
+    <input id="two" type="radio" name="items" value="two">
+    <label for="two">Choice Two</label><br>
+    <input id="three" type="radio" name="items" value="three">
+    <label for="three">Choice Three</label>
+  </fieldset>
+</form>
+```
+
+
+
+### Date
+
+Set the type attribute of an input tag to "date" and you get a date picker.
+
+```html
+<label for="input1">Enter a date:</label>
+<input type="date" id="input1" name="input1">
+```
+
+
+
+### Datetime attribute
+
+The date tag, along with the datetime attribute, provides a standardized version of date which avoids any confusion.
+
+```html
+We went to the supermarket <time datetime="2013-02-13">last Wednesday</time>.
+<!-- datetime="year-month-day" -->
+```
+
+
+
+### Access keys
+
+```html
+<button accesskey="b">Press b to </button>
+```
+
+
+
+### Tab index
+
+```html
+<div tabindex="0">This element is tabbable due to tab index.</div>
+```
+
+- When tab index is set to **zero**, the element becomes **tabbable**.
+- When its set to any **negative value** (typically -1), it's **focusable** (you can click on it to focus) but **not tabbable.**
+- When its set to a **positive integer**, it's tabbable and the **tabbing order is increasing**. (eg. When tab is tapped multiple times, elements with tab index set to zero are selected, then 1, 2, 3 etc.)
+
+---
+
+## Responsive Web Design
+
+### Viewport width, viewport height
+
+**vw** and **vh** correspond respectively to the viewport width and the viewport height. They are expressed in percentage.
+
+```css
+body {
+  width: 70vw; /* This means 70% of the viewport width */
+  height: 50vh; /* Half of the viewport height */
+}
+```
+
+
+
+### Vmin and vmax
+
+Instead of using vw and vh, you can also use **vmin** and **vmax**. :
+
+- if **viewport width > viewport height**: **vmax = vw** and **vmin = vh**
+- if **viewport width < viewport height**: **vmax = vh** and **vmin = vw**
+
+---
+
+## CSS Flexbox
 
